@@ -24,6 +24,10 @@ public class Program {
     try {
       CreateHostBuilder(args).Build().Run();
     }
+    catch (Exception ex) {
+      Log.Fatal(ex, "Error in Main method.");
+      throw;
+    }
     finally {
       Log.CloseAndFlush();
     }
