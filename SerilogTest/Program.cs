@@ -18,6 +18,11 @@ public class Program {
     Console.Title = "AuthenticationService";
     Log.Logger = new LoggerConfiguration()
       .ReadFrom.Configuration(Configuration)
+      // Necessary for Serilog.Exceptions.EntityFrameworkCore
+      //.Enrich
+      //.WithExceptionDetails(new DestructuringOptionsBuilder()
+      //  .WithDefaultDestructurers()
+      //  .WithDestructurers(new[] { new DbUpdateExceptionDestructurer() }))
       .CreateLogger();
     AppDomain.CurrentDomain.ProcessExit += (s, e) => Log.CloseAndFlush();
     try {
